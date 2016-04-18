@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="inicioTemplate.xhtml">
+	
+<ui:define name="evento">
+	<p:panelGrid columns="2">
+		<h:form>
+		<h:outputText name="nomeEvento" value="Nome do evento: "></h:outputText>
+		<h:inputText name="nomeEvento" value="${ConvidadoBean.evento.nome}"></h:inputText>
+		<h:outputText name="localEvento" value="Local do evento: "></h:outputText>
+		<h:inputText name="localEvento" value="${ConvidadoBean.evento.local}"></h:inputText>
+		<h:commandButton value="seguinte" action="${ConvidadoBean.passarTela()}" ajax="false"></h:commandButton>
+		</h:form>
+		
+	</p:panelGrid>
+</ui:define>
+</ui:composition>

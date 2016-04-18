@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="principal.xhtml">
+
+<ui:define name="cadastro">
+	    <h:form>
+    	<p:panelGrid columns="1">
+    	<h:outputText value="Cadastro convidado:"/>
+        <label> Nome: 
+        	<p:inputText id="nome" type="text" value="${ConvidadoBean.convidado.nome}" required="true" label="nome">
+        	</p:inputText>
+        	<p:message for="nome" display="icon" />
+        </label>
+        <label> Endereço: 
+        	<p:inputText id="end" type="text" value="${ConvidadoBean.convidado.end}" required="true" label="end">
+        	</p:inputText>
+        	<p:message for="end" display="icon" />
+        </label>
+        <label> CPF: 
+        	<p:inputText id="CPF" type="text" value="${ConvidadoBean.convidado.CPF}" required="true" label="CPF">
+        	</p:inputText>
+        	<p:message for="CPF" display="icon" />
+        </label>
+        <label> Identidade: 
+        	<p:inputText id="identidade" type="text" value="${ConvidadoBean.convidado.identidade}" required="true" label="rg">
+        	</p:inputText>
+        	<p:message for="identidade" display="icon" />
+        </label>
+        <label>
+        	<h:selectOneListbox value="${ConvidadoBean.convidado.perfil}">
+        		<f:selectItem itemValue="Especial" itemLabel="Especial" />
+        		<f:selectItem itemValue="Pagante" itemLabel="Pagante" />
+        	</h:selectOneListbox>
+        </label>
+        <p:commandButton id="cadastrar" action="${ConvidadoBean.cadastrarConvidado()}" value="Cadastrar" ajax="false" icon="ui-icon-star"/>
+        </p:panelGrid>
+    </h:form>
+</ui:define>
+<ui:define name="listar">
+			<h:form>
+			<p:inputText id="nome" type="text" value="${ConvidadoBean.nomeBuscar}" ></p:inputText>
+	    	<p:commandButton id="listar" action="${ConvidadoBean.getLista()}" value="Buscar por nome" ajax="false" icon="ui-icon-star"/>
+	       	</h:form>
+	       	
+</ui:define>
+<ui:define name="validaracesso">
+	<h:form>
+		<p:inputText id="codigo" type="text" value="${ConvidadoBean.codigoBuscar}"></p:inputText>
+		<p:commandButton id="validar" action="${ConvidadoBean.verificarAcesso()}" value="Verificar acesso" ajax="false" />
+	</h:form>
+</ui:define>
+<ui:define name="mensagem">
+	<p:messages id="messages"></p:messages>
+</ui:define>
+</ui:composition>
